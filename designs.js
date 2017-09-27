@@ -6,33 +6,37 @@
 
 
 // Your code goes here!
-const row;
-const col
 
-//color input
+
 function makeGrid () {
-  $('table').on('click','td' function () {
-      const spectrum=$('#colorPicker').val();
-      $(this).css(spectrum);
-    });
+
 //size input
-const table=document.getElementById('#pixel_canvas');
 
-tbl.innerHTML='';
+const height= $('#input_height').val();
+const width= $('#input_width').val();
 
-const row=$('#input_height').val();
-const col=$('#input_width').val();
+const table=document.getElementById('pixel_canvas');
 
-const row ='<tr></tr>'
-    for(let i=0;i<row;i++) {
-      $('#pixel_canvas').append(i);
-      const j=0;
-      while (j<col) {
-        $('#pixel_canvas','tr').append(j);
-      };
-    };
-  }
-  document.getElementById('sizePicker').addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    makeGrid();
+table.innerHTML='';
+
+for (let i=0;i<height;i++) {
+  const row=table.insertRow(i);
+  $('pixel_canvas').append(row);
+
+  for (let j=0;j<width;j++) {
+    const cols=table.insertCell(j);
+    $('pixel_canvas').append(cols);
+
+//color picker
+    table.addEventListener('click',function () {
+      const changeColor=document.getElementById('colorpicker').val();
+      $(this).css('backgroundColor',changeColor);
+    });
+  };
+};
+return false;
+};
+document.getElementById('sizePicker').addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  makeGrid();
   });
